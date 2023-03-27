@@ -1,0 +1,85 @@
+import java.util.*;
+
+
+//========== User's Code Starts Here ==========
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+          if(list1!=null && list2!=null){
+        if(list1.val<list2.val){
+            list1.next=mergeTwoLists(list1.next,list2);
+            return list1;
+            }
+            else{
+                list2.next=mergeTwoLists(list1,list2.next);
+                return list2;
+              }
+            }
+    if(list1==null)
+        return list2;
+        return list1;
+    }
+}
+
+//========== User's Code Ends Here ==========
+
+
+
+public class Main
+{
+     public static void main(String[]args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int n =sc.nextInt();
+        int m=sc.nextInt();
+        Solution s = new Solution();
+        ListNode head =new ListNode(sc.nextInt());
+        ListNode temp=head;
+        for(int i=1;i<n;i++)
+        {
+            ListNode new_node=new ListNode(sc.nextInt());
+            temp.next=new_node;
+            temp=new_node;
+        }
+        ListNode head1 =new ListNode(sc.nextInt());
+        ListNode temp1=head1;
+        for(int i=1;i<m;i++)
+        {
+            ListNode new_node=new ListNode(sc.nextInt());
+            temp1.next=new_node;
+            temp1=new_node;
+        }
+        
+        
+        ListNode output = s.mergeTwoLists(head,head1);
+        String str="";
+        while(output!=null)
+        {
+            str=str+output.val+" ";
+            output=output.next;
+        }
+        System.out.println(str);
+    }
+}
+class ListNode
+{
+     int val;
+     ListNode next;
+     ListNode() {}
+     ListNode(int val) 
+     { 
+         this.val = val; 
+         next=null;
+         
+     }
+}
