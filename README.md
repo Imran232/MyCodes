@@ -1,2 +1,2 @@
 # MyCodes
-This is a basic binary search program in java
+These are my codes which i worked on in java
